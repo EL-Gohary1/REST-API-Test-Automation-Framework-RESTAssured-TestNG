@@ -31,7 +31,6 @@ public abstract class BaseApi<T extends BaseApi<T>> {
                 // The PropertyUtil class is responsible for reading the configuration properties, and the baseUrl() method retrieves the specific property for the base URL
                 .baseUri(PropertyUtil.getProperty().baseUrl())
                 .filters(new AllureRestAssured());
-
     }
 
     @SuppressWarnings("unchecked")
@@ -71,14 +70,24 @@ public abstract class BaseApi<T extends BaseApi<T>> {
         return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     // Protected methods to set various request path parameter
-    protected void setPathParam(String paramName, Object paramValue) {
+    protected T setPathParam(String paramName, Object paramValue) {
         this.requestSpecification.pathParam(paramName, paramValue);
+        return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     // Protected methods to set various request path parameters
-    protected void setPathParams(Map<String, Object> map) {
+    protected T setPathParams(Map<String, Object> map) {
         this.requestSpecification.pathParams(map);
+        return (T) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    protected T setQueryParams(Map<String, Object> map) {
+        this.requestSpecification.queryParams(map);
+        return (T) this;
     }
 
 

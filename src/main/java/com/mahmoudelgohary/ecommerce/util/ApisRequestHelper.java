@@ -8,6 +8,7 @@ import com.mahmoudelgohary.ecommerce.pojo.request.LoginRequest;
 import com.mahmoudelgohary.ecommerce.pojo.request.RegisterRequest;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class ApisRequestHelper {
 
@@ -61,6 +62,23 @@ public class ApisRequestHelper {
     public static LoginRequest getInvalidUserLoginRequest() {
         return new LoginRequest(TestDataHelper.generateRandomPassword(), TestDataHelper.generateRandomEmail());
     }
+
+
+    // ------------------ Generic method to convert request object to Map with optional excluded fields ------------------
+    // variable arguments (excludeFields) allow you to specify any number of fields to exclude from the resulting map,
+    // making this method flexible for different request objects and scenarios.
+    public static Map<String, Object> toMap(Object request, String... excludeFields) {
+        Map<String, Object> mapRequest = mapper.convertValue(request, new TypeReference<Map<String, Object>>() {});
+        mapRequest.values().removeIf(Objects::isNull);
+        if (excludeFields != null) {
+            for (String field : excludeFields) {
+                mapRequest.remove(field);
+            }
+        }
+        return mapRequest;
+    }
+
+
 
 
 }
