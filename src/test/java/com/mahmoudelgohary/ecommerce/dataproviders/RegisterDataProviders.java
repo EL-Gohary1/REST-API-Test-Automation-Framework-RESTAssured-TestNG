@@ -1,4 +1,4 @@
-package com.mahmoudelgohary.ecommerce.tests.dataproviders;
+package com.mahmoudelgohary.ecommerce.dataproviders;
 
 import com.mahmoudelgohary.ecommerce.constants.InvalidType;
 import com.mahmoudelgohary.ecommerce.util.ApisRequestHelper;
@@ -6,7 +6,8 @@ import org.testng.annotations.DataProvider;
 
 public class RegisterDataProviders {
 
-    @DataProvider(name = "validRegistrationData")
+    // This data provider generates test cases for valid registration data. It creates multiple instances of RegisterRequest using the ApisRequestHelper.
+    @DataProvider(name = "validRegistrationData", parallel = true)
     public Object[][] validRegistrationDataProvider() {
         // Provide multiple sets of RegisterRequest data for testing
         int numberOfTests = 3; // You can adjust this number to generate more or fewer test cases
@@ -18,7 +19,8 @@ public class RegisterDataProviders {
         return data;
     }
 
-    @DataProvider(name = "inValidRegistrationData")
+    // This data provider generates test cases for various types of invalid registration data based on the InvalidType enum.
+    @DataProvider(name = "inValidRegistrationData", parallel = true)
     public Object[][] inValidRegistrationDataProvider() {
         InvalidType[] types = InvalidType.values();
         int numberOfTests = types.length; // Generate one test case for each type of invalid input defined in the InvalidType enum

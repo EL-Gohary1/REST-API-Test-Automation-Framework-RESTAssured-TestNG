@@ -1,6 +1,7 @@
 package com.mahmoudelgohary.ecommerce.http;
 
 import com.mahmoudelgohary.ecommerce.config.PropertyUtil;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -28,7 +29,8 @@ public abstract class BaseApi<T extends BaseApi<T>> {
         // The base URI is retrieved from the PropertyUtil class, which reads from a configuration file
         this.requestSpecification = RestAssured.given()
                 // The PropertyUtil class is responsible for reading the configuration properties, and the baseUrl() method retrieves the specific property for the base URL
-                .baseUri(PropertyUtil.getProperty().baseUrl());
+                .baseUri(PropertyUtil.getProperty().baseUrl())
+                .filters(new AllureRestAssured());
 
     }
 

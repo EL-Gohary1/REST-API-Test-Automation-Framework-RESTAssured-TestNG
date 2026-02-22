@@ -7,4 +7,5 @@ public enum InvalidType {
     INVALID_EMAIL_FORMAT,
     DUPLICATE_EMAIL,
     INVALID_DATA_TYPE,
+    SHORT_PASSWORD,
 }
