@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="E:/iti/java/projects/ECommerceAPITests" parallel="methods" thread-count="3">
+        <classes>
+            <class name="com.mahmoudelgohary.ecommerce.tests.RegisterApiTests">
+                <methods>
+                    <include name="inValidateRegisterStatusCode"/>
+                    <include name="validateRegisterResponse"/>
+                    <include name="validateRegisterStatusCode"/>
+                </methods>
+            </class>
+            <class name="com.mahmoudelgohary.ecommerce.tests.LoginApiTests">
+                <methods>
+                    <include name="validateLoginStatusCode"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
