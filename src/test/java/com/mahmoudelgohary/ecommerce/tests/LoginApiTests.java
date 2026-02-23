@@ -14,11 +14,13 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class LoginApiTests extends BaseTest<LoginApi> {
 
+    // This method will create an instance of the LoginApi class to be used in the tests.
     @Override
     protected LoginApi createApiInstance() {
         return new LoginApi(); // Replace with actual API instance if needed
     }
 
+    // This test will validate the status code of the login API response for different credentials.
     @Test(description = "This test will validate the status code of the login API response for different credentials."
             , dataProvider = "LoginData", dataProviderClass = LoginDataProvider.class)
     public void validateLoginStatusCode(LoginRequest credential, int expectedStatus) {

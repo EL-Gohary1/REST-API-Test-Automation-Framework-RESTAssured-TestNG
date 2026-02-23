@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import static io.restassured.http.Method.*;
 
+// The ProductPaths enum defines the API endpoints and their corresponding HTTP methods for product-related operations in the e-commerce application. Each enum constant represents a specific API endpoint, such as listing all products, searching for products, getting product details by ID, creating a new product, updating product stock, and deleting a product. The @AllArgsConstructor annotation generates a constructor that initializes the path and method fields for each enum constant, while the @Getter annotation provides getter methods to access these fields.
 @AllArgsConstructor
 @Getter
 public enum ProductPaths {

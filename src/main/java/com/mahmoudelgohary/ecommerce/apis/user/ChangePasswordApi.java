@@ -9,6 +9,9 @@ import io.restassured.response.Response;
 
 public class ChangePasswordApi extends BaseApi<ChangePasswordApi> {
 
+    // Constructor to initialize the API with logging for all requests and responses,
+    // set the content type to JSON, set the base path for the change password endpoint,
+    // and add the Bearer token for authentication based on the user role
     public ChangePasswordApi(UserRole userRole) {
         super();
         this.loggAllResponseData().loggAllRequestData()
@@ -17,6 +20,7 @@ public class ChangePasswordApi extends BaseApi<ChangePasswordApi> {
             .setBearerAuthHeader(TokenManager.getToken(userRole));
     }
 
+    // Method to change the password for the authenticated user
     public Response changePassword(Object body) {
         return this.setRequestBody(body)
                    .sendRequest(UserPaths.CHANGE_PASSWORD.getMethod());

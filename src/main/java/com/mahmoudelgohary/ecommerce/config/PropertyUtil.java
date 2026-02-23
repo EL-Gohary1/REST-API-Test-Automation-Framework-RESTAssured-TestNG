@@ -4,6 +4,7 @@ import org.aeonbits.owner.ConfigCache;
 
 public class PropertyUtil {
 
+    // The PropertyUtil class provides a utility method to access the configuration properties defined in the PropertyConfig interface.
     public static PropertyConfig getProperty() {
         // The getProperty() method is responsible for retrieving the configuration properties defined in the PropertyConfig interface.
         // It uses the ConfigFactory from the OWNER library to create an instance of the PropertyConfig interface,

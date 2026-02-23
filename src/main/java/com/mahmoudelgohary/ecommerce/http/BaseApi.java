@@ -33,6 +33,7 @@ public abstract class BaseApi<T extends BaseApi<T>> {
                 .filters(new AllureRestAssured());
     }
 
+
     @SuppressWarnings("unchecked")
     protected T setRequestBody(Object body) {
         // Set the request body for the API request

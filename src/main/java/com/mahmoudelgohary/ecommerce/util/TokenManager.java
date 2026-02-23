@@ -24,6 +24,7 @@ public class TokenManager {
                 if (accessUserToken == null) {
                     accessUserToken = renewToken(role);
                 }
+                // The yield statement is used to return the value of accessUserToken after it has been assigned a new token if it was null, or simply return the existing token if it was already available.
                 yield accessUserToken;
             }
             case ADMIN -> {
@@ -39,6 +40,8 @@ public class TokenManager {
     // This method is responsible for renewing the access token for a specific user role by performing a login request using the appropriate credentials for that role.
     private static String renewToken(UserRole role) {
 
+        // Create a LoginRequest object with the appropriate credentials based on the user role (ADMIN or USER) using a switch expression.
+        // The credentials are retrieved from the properties file using the getProperty() method, which is part of the PropertyUtil class.
         LoginRequest credential = switch (role) {
             case ADMIN -> new LoginRequest(getProperty().adminPassword(), getProperty().adminEmail());
             case USER -> new LoginRequest(getProperty().userPassword(), getProperty().userEmail());
@@ -50,10 +53,15 @@ public class TokenManager {
         // Perform the login request using the provided credentials and store the response.
         Response response = loginApi.performLogin(credential);
 
+        // Check if the login request was successful by verifying the status code of the response. If the status code is not SC_OK (200),
+        // it means that the login attempt failed, and a RuntimeException is thrown with an appropriate error message.
         if (response.statusCode() != SC_OK) {
             throw new RuntimeException("Failed to get token! Status code: " + response.statusCode());
         }
 
+        // If the login request is successful, the access token is extracted from the response using the path() method and returned.
+        // The path() method allows you to navigate through the JSON response and retrieve the value of the "token" field,
+        // which contains the access token needed for authenticated requests.
         return response.path("token");
     }
 }
