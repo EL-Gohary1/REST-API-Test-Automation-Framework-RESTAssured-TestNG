@@ -198,8 +198,6 @@ User.email=user@gmail.com
 User.password=12345678910
 ```
 
-> ⚠️ **Do not commit real credentials.** Add `config.properties` to `.gitignore` and use environment variables or a CI secrets manager in production.
-
 The properties are accessed via the **OWNER** library through a typed interface (`PropertyConfig`) and a static utility (`PropertyUtil.getProperty()`), so all configuration values are compile-time safe.
 
 ---
