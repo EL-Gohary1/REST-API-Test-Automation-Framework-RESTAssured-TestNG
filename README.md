@@ -109,23 +109,23 @@ ECommerceAPITests/
 
 ```
 ┌─────────────────────────────────────────────┐
-│              Test Layer                      │
-│  LoginApiTests  |  RegisterApiTests          │
-│  ProfileSetupTests  |  ChangePasswordTests   │
+│              Test Layer                     │
+│  LoginApiTests  |  RegisterApiTests         │
+│  ProfileSetupTests  |  ChangePasswordTests  │
 └────────────────────┬────────────────────────┘
                      │ uses
 ┌────────────────────▼────────────────────────┐
-│             API Client Layer                 │
+│             API Client Layer                │
 │  LoginApi  |  RegisterApi                   │
-│  UserProfileApi  |  ChangePasswordApi        │
-│  (all extend BaseApi<T>)                     │
+│  UserProfileApi  |  ChangePasswordApi       │
+│  (all extend BaseApi<T>)                    │
 └────────────────────┬────────────────────────┘
                      │ uses
 ┌────────────────────▼────────────────────────┐
-│              Support Layer                   │
-│  TokenManager  |  ApisRequestHelper          │
-│  TestDataHelper (JavaFaker)                  │
-│  PropertyUtil / PropertyConfig               │
+│              Support Layer                  │
+│  TokenManager  |  ApisRequestHelper         │
+│  TestDataHelper (JavaFaker)                 │
+│  PropertyUtil / PropertyConfig              │
 └─────────────────────────────────────────────┘
 ```
 
