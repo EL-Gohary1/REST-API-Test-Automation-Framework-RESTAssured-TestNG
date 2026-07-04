@@ -8,6 +8,7 @@ import lombok.Getter;
 // The @Getter annotation provides getter methods for all fields in the class, allowing access to the search criteria properties.
 // The Builder class provides methods for setting each search criterion and a build() method to create an instance of ProductSearchCriteria with the specified criteria
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductSearchCriteria {
 
     private final String query;
