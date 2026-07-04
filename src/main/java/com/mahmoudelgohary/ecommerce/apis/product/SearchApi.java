@@ -24,7 +24,8 @@ public class SearchApi extends BaseApi<SearchApi> {
 
     // Method to filter items based on the provided search criteria
     // The filters parameter is a Map containing the search criteria for filtering products
-    public Response filterItems(Map<String,Object> filters) {
+    public Response filterItems(ProductSearchCriteria criteria) {
+        Map<String, Object> filters = MAPPER.convertValue(criteria, new TypeReference<Map<String, Object>>() {});
         return this.setQueryParams(filters)
                    .sendRequest(ProductPaths.SEARCH_PRODUCTS.getMethod());
     }
